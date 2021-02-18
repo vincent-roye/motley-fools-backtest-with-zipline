@@ -13,7 +13,17 @@ The trading logic is fairly simple:
 * T0: Invest the entire initial capital in their latest recommendations. Ex: $50,0000 are invested across the 25 last recommendations. 
 * For each new upcoming recommendation, we buy shares for an approximate fixed amount of money (Ex: $550). If the available cash is insufficient, we close the T0 position that has been the most profitable so far. These new positions are the "rolling" positions.
 * After x days following the opening of each "rolling" position (Ex: 180 days), we close it and keep the profit in cash.
-   
+
+# Strategy Results
+
+``` python
+INIT_CAPITAL = 50000
+T0_POSITION_SIZE = 2000 # At T0 we buy for that amount of x different equities
+POSITION_SIZE = 550
+HOLDING_PERIOD = 180  # days
+```
+![Results of the Motley Fools Recommendations backtest](strategy_results_2005-2020.png)
+
 # Data Ingestion with Zipline
 
 1. Add the following import instruction to the extension.py file located in : /venv/Lib/site-packages/zipline

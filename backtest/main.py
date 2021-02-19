@@ -8,6 +8,7 @@ Created on Sun Dec  6 09:29:22 2020
 import matplotlib.pyplot as plt
 
 # Import Zipline functions
+from pyfolio.timeseries import *
 from zipline import run_algorithm
 from zipline.api import order, order_value, get_datetime, get_order, symbol, record
 
@@ -186,11 +187,18 @@ def handle_data(context, data):
 
 
 def analyze(context, perf):
+
+    # Custom analysis
     analysis.draw_plots(perf)
 
     # Pyfolio
-
     returns, positions, transactions = pf.utils.extract_rets_pos_txn_from_zipline(perf)
+
+    # Custom metrics
+    print("Annualized Return: {:.2%}".format(annual_return(returns)))
+    print("Max Drawdown: {:.2%}".format(max_drawdown(returns)))
+    print("Annualized Standard Deviation: {:.2%} ".format(returns.std()*16))
+
     pf.create_simple_tear_sheet(returns, benchmark_rets=get_pf_formatted_benchmark("QQQ"))
     plt.show()
 

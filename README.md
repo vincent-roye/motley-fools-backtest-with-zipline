@@ -16,12 +16,19 @@ The trading logic is fairly simple:
 
 # Strategy Results
 
+* Annualized Return: 21.57%
+* Max Drawdown: -51.18%
+* Annualized Standard Deviation: 25.57%
+
 ``` python
 INIT_CAPITAL = 50000
 T0_POSITION_SIZE = 2000 # At T0 we buy for that amount of x different equities
 POSITION_SIZE = 550
 HOLDING_PERIOD = 180  # days
 ```
+
+
+
 ![Results of the Motley Fools Recommendations backtest](strategy_results_2005-2020.png)
 
 # Data Ingestion with Zipline
